@@ -6,7 +6,7 @@ see also p5_sumaho
   * https://github.com/yoggy/p5_sumaho
 
 Google Play URL
-  * https://play.google.com/store/apps/details?id=net.sabamiso.android.p5_sumaho_player
+  * https://play.google.com/store/apps/details?id=net.sabamiso.p5_sumaho_player
 
 demo movie
   * http://youtu.be/RWt1vlE57-g
