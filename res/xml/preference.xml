@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+   	<CheckBoxPreference
+        android:defaultValue="false"
+        android:enabled="true"
+        android:key="enable_camera"
+        android:summary="enable built‐in camera http server function"
+        android:title="enable_camera" />
+    
+	<CheckBoxPreference
+        android:defaultValue="false"
+        android:enabled="true"
+        android:key="use_inside_camera"
+        android:summary="capture using inside camera"
+        android:title="use_inside_camera" />
+
+</PreferenceScreen>
