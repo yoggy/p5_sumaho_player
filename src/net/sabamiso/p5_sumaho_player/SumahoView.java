@@ -8,6 +8,7 @@ import net.sabamiso.p5_sumaho_player.sensor.GravitySensor;
 import net.sabamiso.p5_sumaho_player.sensor.LightSensor;
 import net.sabamiso.p5_sumaho_player.sensor.MagneticFieldSensor;
 import net.sabamiso.p5_sumaho_player.sensor.ProximitySensor;
+import net.sabamiso.utils.Config;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -43,10 +44,12 @@ public class SumahoView extends View implements
 
 	Handler handler = new Handler();
 
-	boolean debug = false;
-
+	Config cf;
+	
 	public SumahoView(Context context) {
 		super(context);
+		cf = Config.getInstance();
+		
 		setBackgroundColor(Color.BLACK);
 
 		p_default = new Paint();
@@ -61,11 +64,11 @@ public class SumahoView extends View implements
 	}
 
 	public boolean getDebug() {
-		return this.debug;
+		return cf.getBoolean("debug_mode");
 	}
 
 	public void setDebug(boolean val) {
-		this.debug = val;
+		cf.getBoolean("debug_mode", val);
 
 		handler.post(new Runnable() {
 			@Override
@@ -76,7 +79,7 @@ public class SumahoView extends View implements
 	}
 
 	public void start() {
-		tcp_server = new TCPServer(23401);
+		tcp_server = new TCPServer(cf.getInt("tcp_listen_port_for_image", 23401));
 		tcp_server.setUpdateBitmapListener(this);
 		boolean rv = tcp_server.start();
 
@@ -89,7 +92,7 @@ public class SumahoView extends View implements
 		}
 
 		udp_thread = new UDPEventClient();
-		udp_thread.setPeerPort(23402);
+		udp_thread.setPeerPort(cf.getInt("udp_peer_port_for_send_event",  23402));
 		udp_thread.start();
 
 		// sensor
@@ -199,7 +202,7 @@ public class SumahoView extends View implements
 	}
 
 	private void drawDebugInfo(Canvas canvas) {
-		if (tcp_server.isActive() && !debug)
+		if (tcp_server.isActive() && !getDebug())
 			return;
 
 		int size = 32;

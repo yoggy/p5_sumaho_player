@@ -1,18 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-   	<CheckBoxPreference
+	<EditTextPreference
+        android:defaultValue="23401"
+        android:enabled="true"
+        android:numeric="integer"
+        android:key="tcp_listen_port_for_image"
+        android:summary="tcp port setting for receiving image. (1024-65535, default:23401)"
+        android:title="tcp_listen_port_for_image"/>
+        
+	<EditTextPreference
+        android:defaultValue="23402"
+        android:enabled="true"
+        android:numeric="integer"
+        android:key="udp_peer_port_for_send_event"
+        android:summary="udp port setting for send event. (1-65535, default:23402)"
+        android:title="udp_peer_port_for_send_event"/>
+	
+	<CheckBoxPreference
         android:defaultValue="false"
         android:enabled="true"
         android:key="enable_camera"
-        android:summary="enable built‐in camera http server function"
+        android:summary="enable built‐in camera http server function (default:disable)"
         android:title="enable_camera" />
     
 	<CheckBoxPreference
         android:defaultValue="false"
         android:enabled="true"
         android:key="use_inside_camera"
-        android:summary="capture using inside camera"
+        android:summary="capture using inside camera (default:disable)"
         android:title="use_inside_camera" />
 
+	<CheckBoxPreference
+        android:defaultValue="false"
+        android:enabled="true"
+        android:key="camera_flip_h"
+        android:summary="flip the capture image horizontally (default:disable)"
+        android:title="camera_flip_h" />
+	
+	<EditTextPreference
+        android:defaultValue="8080"
+        android:enabled="true"
+        android:numeric="integer"
+        android:key="tcp_listen_port_for_camera"
+        android:summary="listen port for built‐in camera http server. (1024-65535, default:8080)"
+        android:title="tcp_listen_port_for_camera"/>
+
+	<EditTextPreference
+        android:defaultValue="640"
+        android:enabled="true"
+        android:numeric="integer"
+        android:key="capture_image_width"
+        android:summary="capture_image_width (default:640)"
+        android:title="capture_image_width"/>
+	
+	<EditTextPreference
+        android:defaultValue="480"
+        android:enabled="true"
+        android:numeric="integer"
+        android:key="capture_image_height"
+        android:summary="capture_image_height (default:480)"
+        android:title="capture_image_height"/>
+	
+	<EditTextPreference
+        android:defaultValue="60"
+        android:enabled="true"
+        android:numeric="integer"
+        android:key="capture_jpeg_quality"
+        android:summary="capture_jpeg_quality (1-100, default:60)"
+        android:title="capture_jpeg_quality"/>
+	
+	<CheckBoxPreference
+        android:defaultValue="false"
+        android:enabled="true"
+        android:key="debug_mode"
+        android:summary="enable debug mode (default:disable)"
+        android:title="debug_mode" />
+		
 </PreferenceScreen>
