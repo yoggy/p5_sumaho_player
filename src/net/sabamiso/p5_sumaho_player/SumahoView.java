@@ -205,13 +205,28 @@ public class SumahoView extends View implements
 		if (tcp_server.isActive() && !getDebug())
 			return;
 
-		int size = 32;
+		String addr = getIpAddress();
+		int size = 28;
+		
 		drawText(canvas, 10, 30 + size * 0, size, Color.WHITE,
 				"p5_sumaho_player");
 		drawText(canvas, 30, 30 + size * 1, size, Color.WHITE, "ip address = "
-				+ getIpAddress());
+				+ addr);
 		drawText(canvas, 30, 30 + size * 2, size, Color.WHITE, "listen port = "
 				+ tcp_server.getLietenPort());
+		
+		if (cf.getBoolean("enable_camera") == true) {
+			String url = "";
+			if (addr.contains("ERROR")) {
+				url = addr;
+			}
+			else {
+				int port = cf.getInt("tcp_listen_port_for_camera");
+				url = "http://" + addr + ":" + port + "/camera.jpg";
+			}
+			drawText(canvas, 30, 30 + size * 3, size, Color.WHITE, "url = "
+					+ url);
+		}
 	}
 
 	public void drawText(Canvas canvas, float x, float y, int size, int color,
